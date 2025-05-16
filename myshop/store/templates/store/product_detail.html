@@ -14,3 +14,13 @@
     <a href="{% url 'product_list' %}">Back to product list</a>
 </body>
 </html>
+<form action="{% url 'cart:add' product.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add to cart</button>
+</form>
+
+<form action="{% url 'cart:remove' product.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Remove from Cart</button>
+</form>

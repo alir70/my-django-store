@@ -18,3 +18,22 @@
     </tbody>
 </table>
 <p>Total: ${{ cart.get_total_price }}</p>
+
+<h2>Your Cart</h2>
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    {% for item in cart %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ item.price }}</td>
+        <td>${{ item.total_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>Total: ${{ cart.get_total_price }}</p>
