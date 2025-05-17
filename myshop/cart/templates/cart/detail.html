@@ -37,3 +37,5 @@
     {% endfor %}
 </table>
 <p>Total: ${{ cart.get_total_price }}</p>
+
+<a href="{% url 'orders:order_create' %}">Proceed to Checkout</a>
