@@ -9,7 +9,7 @@
     <ul>
         {% for product in products %}
             <li>
-                <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a><br>
+                <a href="{% url 'store:product_detail' product.pk %}">{{ product.title }}</a><br>
                 <img src="{{ product.image.url }}" alt="{{ product.title }}" />
 <br>
                 {{ product.price }}$
@@ -20,3 +20,9 @@
 </html>
 
 <a href="{% url 'cart:cart_detail' %}">🛒 View Cart</a>
+
+{% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }} | <a href="{% url 'accounts:logout' %}">Logout</a></p>
+{% else %}
+  <a href="{% url 'accounts:login' %}">Login</a> | <a href="{% url 'accounts:register' %}">Register</a>
+{% endif %}
