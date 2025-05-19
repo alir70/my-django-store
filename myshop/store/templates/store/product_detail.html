@@ -11,7 +11,7 @@
     <p>Price: {{ product.price }}$</p>
     <p>Uploaded at: {{ product.created_at }}</p>
 
-    <a href="{% url 'product_list' %}">Back to product list</a>
+    <a href="{% url 'store:product_list' %}">Back to product list</a>
 </body>
 </html>
 <form action="{% url 'cart:add' product.id %}" method="post">
@@ -24,3 +24,8 @@
   {% csrf_token %}
   <button type="submit">Remove from Cart</button>
 </form>
+
+
+{% if item.product.file %}
+    <a href="{% url 'store:secure_download' item.product.id %}">Download</a>
+{% endif %}

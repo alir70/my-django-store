@@ -1,2 +1,13 @@
 <h1>Thank you!</h1>
 <p>Your order has been successfully placed. Your order ID is {{ order.id }}</p>
+<h2>Thank you for your order!</h2>
+<ul>
+  {% for item in order.items.all %}
+    <li>
+      {{ item.product.name }}
+      {% if item.product.file %}
+        | <a href="{% url 'store:secure_download' item.product.id %}">Download</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
